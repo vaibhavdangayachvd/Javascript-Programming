@@ -43,7 +43,9 @@
 <html>
 	<head>
 		<title>Register Account</title>
-		<script>
+	
+        <link rel="stylesheet" type="text/css" href="css/register.css">
+        	<script>
 			function check(){
 				var nm=/^[a-z A-Z]{3,15}$/;
 				var un=/^[a-z A-Z 0-9]{3,30}$/;
@@ -130,65 +132,41 @@
 		</script>
 	</head>
 	<body>
-		<fieldset>
-			<legend align="center">Create new user</legend>
-			<form name="registration" method="post" onSubmit="return check();">
-				<table border="2" align="center">
-					<tr>
-						<th colspan="2" align="center">Enter Details</th>
-					</tr>
-					<tr>
-						<td>First Name</td>
-						<td><input type="text" value="<?php echo $fn;?>" name="first" placeholder="Enter First Name" maxlength="15"></td>
-					</tr>
-					<tr>
-						<td>Last Name</td>
-						<td><input type="text" value="<?php echo $ln;?>" name="last" placeholder="Enter Last Name" maxlength="15"></td>
-					</tr>
-					<tr>
-						<td>Username</td>
-						<td><input type="text" value="<?php echo $un;?>" name="username" placeholder="Choose Username" maxlength="30"></td>
-					</tr>
-					<tr>
-						<td>Password</td>
-						<td><input type="password" value="<?php echo $pw;?>" name="password" placeholder="Enter Password" maxlength="30"></td>
-					</tr>
-					<tr>
-						<td>Re-Password</td>
-						<td><input type="password" value="<?php echo $pw;?>" name="rpassword" placeholder="ReEnter Password" maxlength="30"></td>
-					</tr>
-					<tr>
-						<td>Email</td>
-						<td><input type="text" value="<?php echo $em;?>" name="email" placeholder="Enter Email Address" maxlength="30"></td>
-					</tr>
-					<tr>
-						<td>Mobile</td>
-						<td><input type="text" value="<?php echo $ph;?>" name="phone" placeholder="Enter Mobile Number" maxlength="10"></td>
-					</tr>
-					<tr>
-						<td>Gender</td>
-						<td>
-							<input type="radio" value="male" name="gender">Male
-							<input type="radio" value="female" name="gender">Female
-						</td>
-					</tr>
-					<tr>
-						<td align="center" colspan="2">
-							<?php 
-								if($db)
-									echo'<input type="submit" value="Create Account" name="register">';
-								else
-									echo'<input disabled type="submit" value="Create Account" name="register">';
-							?>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="2" align="center">
-							<?php echo $err;?>
-						</td>
-					</tr>
-				</table>
-			</form>
-		</fieldset>
+		<div class="register">
+			<fieldset>
+				<legend align="center">Create new user</legend>
+				<form name="registration" method="post" onSubmit="return check();">
+					<h1>Enter Details</h1>
+					<p>First Name</p>
+					<input type="text" value="<?php echo $fn;?>" name="first" placeholder="Enter First Name" maxlength="15">
+					<p>Last Name</p>
+					<input type="text" value="<?php echo $ln;?>" name="last" placeholder="Enter Last Name" maxlength="15">
+					<p>Username</p>
+					<input type="text" value="<?php echo $un;?>" name="username" placeholder="Choose Username" maxlength="30">
+					<p>Password</p>
+					<input type="password" value="<?php echo $pw;?>" name="password" placeholder="Enter Password" maxlength="30">
+					<p>Re-Password</p>
+					<input type="password" value="<?php echo $pw;?>" name="rpassword" placeholder="ReEnter Password" maxlength="30">
+					<p>Email</p>
+					<input type="text" value="<?php echo $em;?>" name="email" placeholder="Enter Email Address" maxlength="30">
+					<p>Mobile</p>
+					<input type="text" value="<?php echo $ph;?>" name="phone" placeholder="Enter Mobile Number" maxlength="10">
+					<p class="para">Gender</p><br>
+					<input type="radio" name="gender" value="male">Male
+					<input type="radio" name="gender" value="female">Female
+					<p align="center">
+						<?php 
+							if($db)
+								echo'<input type="submit" value="Create Account" name="register">';
+							else
+								echo'<input disabled type="submit" value="Create Account" name="register">';
+						?>
+					</p>
+					<p align="center">
+						<?php echo $err;?>
+					</p>
+				</form>
+			</fieldset>
+		</div>
 	</body>
 </html>

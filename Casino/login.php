@@ -49,6 +49,7 @@
 <html>
 	<head>
 		<title>Login Account</title>
+        <link rel="stylesheet" type="text/css" href="css/login.css">
 		<script>
 			function check(){
 				if(document.logging.user.value == ""){
@@ -65,40 +66,33 @@
 		</script>
 	</head>
 	<body>
-		<form name="logging" method="post" onSubmit="return check()">
-			<table align="center" border="2">
-				<tr>
-					<td>Username/email/phone</td>
-					<td><input type="text" name="user" value="<?php echo $un?>" placeholder="Enter Login" maxlength="30"></td>
-				</tr>
-					<td>Enter Password</td>
-					<td><input type="password" name="password" value="<?php echo $pw?>" placeholder="Enter Password" maxlength="30"></td>
-				<tr>
-					<td colspan="2" align="center">
-						<?php
-							if($db)
-							{
-								?>
-								<input type="submit" value="Login" name="login">
-								<button type="button" onClick="window.location.href = 'register.php';">Register</button>
-								<?php
-							}
-							else
-							{
-								?>
-								<input disabled type="submit" value="Login" name="login">
-								<button type="button" onClick="window.location.href = 'register.php';">Register</button>
-								<?php
-							}
+		<div class="loginbox">
+			<img src="images/images.png" class="avatar">
+			<form name="logging" method="post" onSubmit="return check()">
+				<p>Username/email/phone</p>
+				<input type="text" name="user" value="<?php echo $un?>" placeholder="Enter Login" maxlength="30">
+				<p>Enter Password</p>
+				<input type="password" name="password" value="<?php echo $pw?>" placeholder="Enter Password" maxlength="30">
+				<?php
+					if($db)
+					{
 						?>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2" align="center">
-						<?php echo $err;?>
-					</td>
-				</tr>
-			</table>
-		</form>
+						<input type="submit" value="Login" name="login">
+						<button type="button" onClick="window.location.href = 'register.php';">Register</button>
+						<?php
+					}
+					else
+					{
+						?>
+						<input disabled type="submit" value="Login" name="login">
+						<button type="button" onClick="window.location.href = 'register.php';">Register</button>
+						<?php
+					}
+				?>
+				<p align="center">
+					<?php echo $err;?>
+				</p>
+			</form>
+        </div>
 	</body>
 </html>
