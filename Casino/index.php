@@ -1,10 +1,12 @@
 <?php
-		session_start();
-		if(!isset($_SESSION['user']))
-		{
-			session_destroy();
-			header('location:login.php');
-		}
+	require 'includes/check_login.php';
+	require 'includes/connection.php';
+	$name=$_SESSION['user'];
+	$name="select first,last from users where id='$name'";
+	$name=mysqli_query($db,$name);
+	$name=mysqli_fetch_array($name);
+	$name=$name['first'].' '.$name['last'];
+	
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -40,8 +42,8 @@
 </div>
 <div class="col-md-8">
 <p style="color:white; word-spacing:5px;padding-top:55px">
-<i>Logged in as <?php echo $_SESSION['user'];?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i>
- <a  href="index.php" style="color:white;font-weight:bold;">GAMBLING</a>&nbsp;&nbsp;<a href="#abtus" style="color:white;font-weight:bold;">ABOUTUS</a>&nbsp;&nbsp;<a href="#contact" style="color:white;font-weight:bold;">CONTACTUS</a>&nbsp;&nbsp;<a href="logout.php" style="color:white;font-weight:bold;">LOGOUT</a>
+<i>Logged in as <?php echo $name;?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i>
+ <a href="casino.php" style="color:white;font-weight:bold;">GAMBLING</a>&nbsp;&nbsp;<a href="#abtus" style="color:white;font-weight:bold;">ABOUTUS</a>&nbsp;&nbsp;<a href="#contact" style="color:white;font-weight:bold;">CONTACTUS</a>&nbsp;&nbsp;<a href="logout.php" style="color:white;font-weight:bold;">LOGOUT</a>
  </p>
 </div>
 </div>

@@ -1,7 +1,7 @@
 <?php
-	error_reporting(0);
+	//error_reporting(0);
 	$un=$pw="";
-	require 'connection.php';
+	require 'includes/connection.php';
 	if(!$db)
 		$err="Not Connected To Database";
 	else 
@@ -38,7 +38,10 @@
 			{
 				setcookie('user[0]',$un,time()+86400*30,"/");
 				setcookie('user[1]',$pw,time()+86400*30,"/");
-				$err="Login Successful !!";
+				$un="select id from users where username='$un' or email='$un' or phone='$un'";
+				$un=mysqli_query($db,$un);
+				$un=mysqli_fetch_array($un);
+				$un=$un['id'];
 				session_start();
 					$_SESSION['user']=$un;
 				header('location:index.php');
@@ -50,20 +53,7 @@
 	<head>
 		<title>Login Account</title>
         <link rel="stylesheet" type="text/css" href="css/login.css">
-		<script>
-			function check(){
-				if(document.logging.user.value == ""){
-					document.logging.user.focus();
-					return false;
-				}
-				else if(document.logging.password.value == ""){
-					document.logging.password.focus();
-					return false;
-				}
-				else
-					return true;
-			}
-		</script>
+		<script src="scripts/login.js"></script>
 	</head>
 	<body>
 		<div class="loginbox">

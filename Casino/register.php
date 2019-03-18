@@ -1,7 +1,7 @@
 <?php
 	error_reporting(0);
 	$fn=$ln=$un=$pw=$em=$ph="";
-	require 'connection.php';
+	require 'includes/connection.php';
 	if(!$db)
 		$err="Not Connected To Database";
 	else 
@@ -34,7 +34,7 @@
 		else
 		{
 			$pw=sha1($pw);
-			$query="insert into users(first,last,username,password,email,phone,gender,balance) values('$fn','$ln','$un','$pw','$em','$ph','$gen',500)";
+			$query="insert into users(first,last,username,password,email,phone,gender,balance) values('$fn','$ln','$un','$pw','$em','$ph','$gen',5000)";
 			mysqli_query($db,$query);
 			header('location:login.php');
 		}
@@ -45,91 +45,7 @@
 		<title>Register Account</title>
 	
         <link rel="stylesheet" type="text/css" href="css/register.css">
-        	<script>
-			function check(){
-				var nm=/^[a-z A-Z]{3,15}$/;
-				var un=/^[a-z A-Z 0-9]{3,30}$/;
-				var pw=/^[a-z A-Z 0-9 @ -]{3,30}$/;
-			    var em=/^[a-z A-Z 0-9]{3,20}@[a-z]{4,6}\.[a-z]{3}$/;
-				var ph=/^[1-9]{1}[0-9]{9}$/;
-				if (document.registration.first.value==""){
-					document.registration.first.focus();
-					return false;
-				}
-				else if (nm.test(document.registration.first.value)==false){
-					alert('First Name should only contain a-z size 3-15')
-					document.registration.first.focus();
-					return false;
-				}
-				else if(document.registration.last.value==""){
-					document.registration.last.focus();
-					return false;
-				}
-				else if (nm.test(document.registration.last.value)==false){
-					alert('Last Name should only contain a-z size 3-15')
-					document.registration.last.focus();
-					return false;
-				}
-				else if(document.registration.username.value==""){
-					document.registration.username.focus();
-					return false;
-				}
-				else if (un.test(document.registration.username.value)==false){
-					alert('Username should only contain a-z A-Z 0-9 size 3-30')
-					document.registration.username.focus();
-					return false;
-				}
-				else if(document.registration.password.value==""){
-					document.registration.password.focus();
-					return false;
-				}
-				else if (pw.test(document.registration.password.value)==false){
-					alert('Password should only contain a-z A-Z 0-9 size 3-30')
-					document.registration.password.focus();
-					return false;
-				}
-				else if(document.registration.rpassword.value==""){
-					document.registration.rpassword.focus();
-					return false;
-				}
-				else if (pw.test(document.registration.rpassword.value)==false){
-					alert('Password should only contain a-z A-Z 0-9 size 3-30')
-					document.registration.rpassword.focus();
-					return false;
-				}
-				else if(document.registration.password.value!=document.registration.rpassword.value)
-				{
-					document.registration.rpassword.value="";
-					alert('Passwords Do Not Match');
-					document.registration.rpassword.focus();
-					return false;
-				}
-				else if(document.registration.email.value==""){
-					document.registration.email.focus();
-					return false;
-				}
-				else if(em.test(document.registration.email.value)==false){
-					alert('Incorrect Email');
-					document.registration.email.focus();
-					return false;
-				}
-				else if(document.registration.phone.value==""){
-					document.registration.phone.focus();
-					return false;
-				}
-				else if(ph.test(document.registration.phone.value)==false){
-					alert('Phone number should be of 10 digit not starting from 0');
-					document.registration.phone.focus();
-					return false;
-				}
-				else if(document.registration.gender.value==""){
-					alert('Gender is Mendatory');
-					return false;
-				}
-				else
-					return true;
-			}
-		</script>
+        	<script src="scripts/register.js"></script>
 	</head>
 	<body>
 		<div class="register">
