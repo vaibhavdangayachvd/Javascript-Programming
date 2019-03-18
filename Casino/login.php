@@ -1,5 +1,5 @@
 <?php
-	//error_reporting(0);
+	error_reporting(0);
 	$un=$pw="";
 	require 'includes/connection.php';
 	if(!$db)

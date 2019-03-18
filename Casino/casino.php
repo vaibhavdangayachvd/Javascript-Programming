@@ -1,4 +1,5 @@
 <?php
+	error_reporting(0);
 	require 'includes/check_login.php';
 ?>
 <html>
