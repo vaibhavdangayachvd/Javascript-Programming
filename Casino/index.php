@@ -44,13 +44,11 @@
 <div class="col-md-8">
 <p style="color:white; word-spacing:5px;padding-top:55px">
 <i>Logged in as <?php echo $name;?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i>
- <a href="casino.php" style="color:white;font-weight:bold;">GAMBLING</a>&nbsp;&nbsp;<a href="#abtus" style="color:white;font-weight:bold;">ABOUTUS</a>&nbsp;&nbsp;<a href="#contact" style="color:white;font-weight:bold;">CONTACTUS</a>&nbsp;&nbsp;<a href="logout.php" style="color:white;font-weight:bold;">LOGOUT</a>
+ <a href="casino.php" style="color:white;font-weight:bold;">GAMBLING</a>&nbsp;&nbsp;<a href="crosszero.php" style="color:white;font-weight:bold;">PLAY-CROSS-ZERO</a>&nbsp;&nbsp;<a href="#abtus" style="color:white;font-weight:bold;">ABOUTUS</a>&nbsp;&nbsp;<a href="#contact" style="color:white;font-weight:bold;">CONTACTUS</a>&nbsp;&nbsp;<a href="logout.php" style="color:white;font-weight:bold;">LOGOUT</a>
  </p>
 </div>
 </div>
 <div class="section_03 ">
-
-<img src="images/inew.jpg" width="1366" />
 
 </div>
 
@@ -88,16 +86,16 @@ Founded in 2019 HOME CASINO LTD. Play all your favorite online casino games at H
 </div>
 
  <div class="col-md-4 ">
-<img src="images/118s-l1600.jpg" style="width:400px;"class="fsty fsty1" />
-<h3 align="center">Rubic cubes   </h3>
+<a href="headtail.php"><img src="images/118s-l1600.jpg" style="width:400px;"class="fsty fsty1" /></a>
+<h3 align="center">Head Tails   </h3>
 </div>
 
 <div class="col-md-4 ">
-<img src="images/255img.jpg" style="width:400px;"class="fsty fsty1" />
-<h3 align="center">Card-Games    </h3>
+<a href="stonepaper.php"><img src="images/255img.jpg" style="width:400px;"class="fsty fsty1" /></a>
+<h3 align="center">Stone Paper Scissor</h3>
 </div>
 <div class="col-md-4 ">
-<img src="images/289img2.jpg" style="width:400px;" class="fsty fsty1" />
+<a href="updown.php"><img src="images/289img2.jpg" style="width:400px;" class="fsty fsty1" /></a>
 <h3 align="center">7UP-7DOWN    </h3>
 </div>
 

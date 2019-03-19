@@ -68,8 +68,8 @@
 					<p>Mobile</p>
 					<input type="text" value="<?php echo $ph;?>" name="phone" placeholder="Enter Mobile Number" maxlength="10">
 					<p class="para">Gender</p><br>
-					<input type="radio" name="gender" value="male">Male
-					<input type="radio" name="gender" value="female">Female
+					<input type="radio" name="gender" value="male"><font color="white" size="4">Male</font>
+					<input type="radio" name="gender" value="female"><font color="white" size="4">Female</font>
 					<p align="center">
 						<?php 
 							if($db)

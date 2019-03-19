@@ -29,6 +29,11 @@
 			$query="update users set balance=$bal where id='$ssn'";
 			mysqli_query($db,$query);
 		}
+		else
+		{
+			$res="You Don't Have Enough Coin Balance";
+			$res=array($res,0);
+		}
 	}
 ?>
 <html>

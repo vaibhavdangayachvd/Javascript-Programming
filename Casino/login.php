@@ -36,8 +36,11 @@
 			}
 			else
 			{
-				setcookie('user[0]',$un,time()+86400*30,"/");
-				setcookie('user[1]',$pw,time()+86400*30,"/");
+				if(isset($_POST['logged']))
+				{
+					setcookie('user[0]',$un,time()+86400*30,"/");
+					setcookie('user[1]',$pw,time()+86400*30,"/");
+				}
 				$un="select id from users where username='$un' or email='$un' or phone='$un'";
 				$un=mysqli_query($db,$un);
 				$un=mysqli_fetch_array($un);
@@ -79,6 +82,8 @@
 						<?php
 					}
 				?>
+				<button type="button" onClick="window.location.href = 'crosszero.php';">Play Offline</button>
+				<p>Keep me logged in<input type="checkbox" name="logged"></p>
 				<p align="center">
 					<?php echo $err;?>
 				</p>
