@@ -36,18 +36,27 @@
 			}
 			else
 			{
-				if(isset($_POST['logged']))
+				$query=mysqli_fetch_array($query);
+				if($query['active'])
 				{
-					setcookie('user[0]',$un,time()+86400*30,"/");
-					setcookie('user[1]',$pw,time()+86400*30,"/");
+					$err="Account Inactive !! Check Email";
+					$pw="";
 				}
-				$un="select id from users where username='$un' or email='$un' or phone='$un'";
-				$un=mysqli_query($db,$un);
-				$un=mysqli_fetch_array($un);
-				$un=$un['id'];
-				session_start();
+				else
+				{
+					if(isset($_POST['logged']))
+					{
+						setcookie('user[0]',$un,time()+86400*30,"/");
+						setcookie('user[1]',$pw,time()+86400*30,"/");
+					}
+					$un="select id from users where username='$un' or email='$un' or phone='$un'";
+					$un=mysqli_query($db,$un);
+					$un=mysqli_fetch_array($un);
+					$un=$un['id'];
+					session_start();
 					$_SESSION['user']=$un;
-				header('location:index.php');
+					header('location:index.php');
+				}
 			}
 		}
 	}

@@ -33,10 +33,32 @@
 			$err="Mobile Already Exist !!";
 		else
 		{
-			$pw=sha1($pw);
-			$query="insert into users(first,last,username,password,email,phone,gender,balance) values('$fn','$ln','$un','$pw','$em','$ph','$gen',5000)";
-			mysqli_query($db,$query);
-			header('location:login.php');
+			$rnd=rand(1,9);
+            require 'PHPMailer/PHPMailerAutoload.php';
+            $mail = new PHPMailer;
+            $mail->isSMTP();
+			$mail->Host = 'smtp.gmail.com'; // Which SMTP server to use.
+            $mail->Port = 587; // Which port to use, 587 is the default port for TLS security.
+            $mail->SMTPSecure = 'tsl'; // Which security method to use. TLS is most secure.
+            $mail->SMTPAuth = true; // Whether you need to login. This is almost always required.
+            $mail->IsHTML(true);
+            $mail->Username = "amitbhadanakg@gmail.com"; // Your Gmail address.
+            $mail->Password = "9314702277"; // Your Gmail login password or App Specific Password
+            $mail->setFrom('amitbhadanakg@gmail.com', 'Home Casino'); // Set the sender of the message.
+            $mail->addAddress($em, 'User'); // Set the recipient of the message.
+            $mail->Subject = 'Verify Your Email'; // The subject of the message.
+            $bd="http://homecasino.ml/verify.php?id=".$em."&pw=".sha1($rnd);
+            $mail->Body = $bd;
+			if ($mail->send()) 
+            {
+                $pw=sha1($pw);
+				$query="insert into users(active,first,last,username,password,email,phone,gender,balance) values($rnd,'$fn','$ln','$un','$pw','$em','$ph','$gen',1000)";
+				mysqli_query($db,$query);
+				$err="Check Inbox(or Spam) for Verification Link";
+            } 
+            else
+                $err="Verification link couldn't be sent to email.";
+            $pw="";
 		}
 	}
 ?>
@@ -77,6 +99,7 @@
 							else
 								echo'<input disabled type="submit" value="Create Account" name="register">';
 						?>
+						<input type="button" value="Login" onClick="window.location.href='login.php'">
 					</p>
 					<p align="center">
 						<?php echo $err;?>

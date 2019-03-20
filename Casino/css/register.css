@@ -1,21 +1,21 @@
-body
-{
-margin:0;
-padding: 0;
+body{
+	margin:0;
+	padding: 0;
 }
-body:before{
-content:'';
-position:fixed;
-width:100vw;
-height:100vh;
-background-image:url(../images/addiction-bet-betting-5258.jpg);
-background-position: center center;
-background-repeat:no-repeat;
-background-attachmen:fixed;
--webkit-background-size:cover;
-background-size:cover;
 
+body:before{
+	content:'';
+	position:fixed;
+	width:100vw;
+	height:100vh;
+	background-image:url(../images/addiction-bet-betting-5258.jpg);
+	background-position: center center;
+	background-repeat:no-repeat;
+	background-attachment:fixed;
+	-webkit-background-size:cover;
+	background-size:cover;
 }
+
 h1{
 	margin:0;
 	padding:0 0 20px;
@@ -23,11 +23,12 @@ h1{
 	font-size:22px;
 	color:#FFF;
 }
+
 legend{
 	font-size:14px;
 	color:#FFF;
 }
-	
+
 .register{
 position:absolute;
 top:70%;
@@ -38,10 +39,11 @@ left: 50%;
 -o-transform: translate(-50%,-50%);
 transform: translate(-50%,-50%);
 width:400px;
-height: 820px;
+height: 900px;
 padding: 60px 40px;
 background: rgba(0,0,0,0.8);
 }
+
 .register p{
 margin:0;
 padding:0;
@@ -55,41 +57,48 @@ width:100%;
 margin-bottom:20px;
 }
 
-.register input[type="text"],input[type="password"]
-	{
-		border:none;
-		border-bottom:1px solid #fff;
-		background: transparent;
-		outline:none;
-		height:40px;
-		color:#fff;
-		font-size:14px;
-	}
-	
+.register input[type="text"],input[type="password"]{
+	border:none;
+	border-bottom:1px solid #fff;
+	background: transparent;
+	outline:none;
+	height:40px;
+	color:#fff;
+	font-size:14px;
+}
 
-
-.register input[type="submit"]
-	{
-		border:none;
-		outline:none;
-		height:40px;
-		background:#;
-		color:#F00;
-		font-size:20px;
-		border-radius:20px;
-		cursor:pointer;
-		margin-top:15%;
-	}
+.register input[type="submit"]{
+	border:none;
+	outline:none;
+	height:40px;
+	background:#;
+	color:#F00;
+	font-size:20px;
+	border-radius:20px;
+	cursor:pointer;
+	margin-top:5%;
+}
+.register input[type="button"]{
+	border:none;
+	outline:none;
+	height:40px;
+	background:#;
+	color:#F00;
+	font-size:20px;
+	border-radius:20px;
+	cursor:pointer;
+	margin-top:0%;
+}
 	
 .register input [type="checkbox"]{
-width:15%;
-margin-bottom:20px;
+	width:15%;
+	margin-bottom:20px;
 }
 .para{
 	font-size:20px
 	text-align:left;	
 	padding:0;
-	}
+}
 .register input[type="radio"]{
 	width:30%;
 	margin-bottom:20px;
