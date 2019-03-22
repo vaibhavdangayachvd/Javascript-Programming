@@ -3,11 +3,16 @@
 	require 'includes/check_login.php';
 	require 'includes/connection.php';
 	$res=array("","");
-	$ssn = $_SESSION['user'];
-	$query="select balance from users where id='$ssn'";
-	$bal=mysqli_query($db,$query);
-	$bal=mysqli_fetch_array($bal);
-	$bal=$bal['balance'];
+	if(isset($_SESSION['guest']))
+		$bal=$_SESSION['guest'];
+	else
+	{
+		$ssn = $_SESSION['user'];
+		$query="select balance from users where id='$ssn'";
+		$bal=mysqli_query($db,$query);
+		$bal=mysqli_fetch_array($bal);
+		$bal=$bal['balance'];
+	}
 	if(isset($_REQUEST['up']) || isset($_REQUEST['down']))
 	{
 		$bet=$_REQUEST['bet'];
@@ -26,6 +31,13 @@
 				$bal-=$bet;
 				$res="Output : ".$res." - You Lose ".$bet." Coins :(";
 				$res=array($res,0);
+			}
+			if(isset($_SESSION['guest']))
+				$_SESSION['guest']=$bal;
+			else
+			{
+				$query="update users set balance=$bal where id='$ssn'";
+				mysqli_query($db,$query);
 			}
 			$query="update users set balance=$bal where id='$ssn'";
 			mysqli_query($db,$query);

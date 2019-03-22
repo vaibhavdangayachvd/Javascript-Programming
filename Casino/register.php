@@ -44,11 +44,14 @@
             $mail->IsHTML(true);
             $mail->Username = "amitbhadanakg@gmail.com"; // Your Gmail address.
             $mail->Password = "9314702277"; // Your Gmail login password or App Specific Password
-            $mail->setFrom('amitbhadanakg@gmail.com', 'Home Casino'); // Set the sender of the message.
-            $mail->addAddress($em, 'User'); // Set the recipient of the message.
-            $mail->Subject = 'Verify Your Email'; // The subject of the message.
-            $bd="http://homecasino.ml/verify.php?id=".$em."&pw=".sha1($rnd);
-            $mail->Body = $bd;
+            $mail->setFrom('amitbhadanakg@gmail', 'Home Casino'); // Set the sender of the message.
+            $mail->addAddress($em, $fn); // Set the recipient of the message.
+            $mail->Subject = 'Home Casino - Please confirm your email address.'; // The subject of the message.
+            $bd="Thanks for signing up for Home Casino! Please click the link below to confirm your email address.<br><br>";
+			$tmp.="https://homecasino.ml/verify.php?id=".$em."&pw=".sha1($rnd);
+			$bd.="<a href=".$tmp.">".$tmp."</a><br><br>";
+            $bd.="Happy playing!<br>Team HomeCasino";
+			$mail->Body = $bd;
 			if ($mail->send()) 
             {
                 $pw=sha1($pw);

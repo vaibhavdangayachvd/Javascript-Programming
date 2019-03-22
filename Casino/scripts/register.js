@@ -2,7 +2,7 @@ function check(){
 	var nm=/^[a-z A-Z]{3,15}$/;
 	var un=/^[a-z A-Z 0-9]{3,30}$/;
 	var pw=/^[a-z A-Z 0-9 @ -]{3,30}$/;
-	var em=/^[a-z A-Z 0-9]{3,25}@[a-z]{4,7}\.[a-z]{2,3}$/;
+	var em=/^[a-z A-Z 0-9]{3,25}@[a-z]{4,10}\.[a-z]{2,5}$/;
 	var ph=/^[1-9]{1}[0-9]{9}$/;
 	if (document.registration.first.value==""){
 		document.registration.first.focus();
