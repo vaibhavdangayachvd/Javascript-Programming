@@ -38,7 +38,8 @@ password VARCHAR(50) UNIQUE,
 email VARCHAR(40) UNIQUE,
 phone VARCHAR(10),
 gender VARCHAR(7),
-balance INT(11)
+balance INT(11),
+ref_id VARCHAR(7)
 )";
 
 if (mysqli_query($conn, $sql)) {
@@ -46,5 +47,6 @@ if (mysqli_query($conn, $sql)) {
 } else {
     echo "Error creating table: " . mysqli_error($conn);
 }
+
 mysqli_close($conn);
 ?>

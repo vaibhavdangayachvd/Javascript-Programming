@@ -1,5 +1,5 @@
 <?php
-	error_reporting(0);
+	//error_reporting(0);
 	$fn=$ln=$un=$pw=$em=$ph="";
 	require 'includes/connection.php';
 	if(!$db)
@@ -33,6 +33,20 @@
 			$err="Mobile Already Exist !!";
 		else
 		{
+			//If user has referral code
+			if(isset($_POST['ref']))
+			{
+				$ref=$_POST['ref'];
+				$query="select id from users where ref_id='$ref'";
+				$query=mysqli_query($db,$query);
+				//If code is incorrect correct
+				if(!mysqli_num_rows($query))
+				{
+					$err="Invalid Referral Code !!";
+					goto last;
+				}
+			}
+			//For Verification Mail
 			$rnd=rand(1,9);
             require 'PHPMailer/PHPMailerAutoload.php';
             $mail = new PHPMailer;
@@ -52,18 +66,37 @@
 			$bd.="<a href=".$tmp.">".$tmp."</a><br><br>";
             $bd.="Happy playing!<br>Team HomeCasino";
 			$mail->Body = $bd;
-			if ($mail->send()) 
+			if ($mail->send()) //If sent successfully
             {
-                $pw=sha1($pw);
-				$query="insert into users(active,first,last,username,password,email,phone,gender,balance) values($rnd,'$fn','$ln','$un','$pw','$em','$ph','$gen',1000)";
+				//Insert Data
+				$pw=sha1($pw);
+				$query="insert into users(active,first,last,username,password,email,phone,gender,balance) values($rnd,'$fn','$ln','$un','$pw','$em','$ph','$gen',5000)";
 				mysqli_query($db,$query);
+				$query="select id from users where username='$un'";
+				$query=mysqli_query($db,$query);
+				$query=mysqli_fetch_array($query);
+				$id=$query['id'];
+				//If user has referral code
+				if(isset($_POST['ref']))
+				{
+					$query="insert into referrals(ref_id,user_id,active)values('$ref',$id,0)";
+					mysqli_query($db,$query);
+				}
+				//For Creating Referral Code
+				$ref=strtoupper(substr($fn,0,3).$id.substr(sha1(rand(0,1000)),0,2));
+				$query="update users set ref_id='$ref' where id=$id";
+				$query=mysqli_query($db,$query);
 				$err="Check Inbox(or Spam) for Verification Link";
+				$pw="";
             } 
             else
-                $err="Verification link couldn't be sent to email.";
-            $pw="";
-		}
-	}
+			{
+				$err="Verification link couldn't be sent to email.";
+				$pw="";
+			}
+		}//End of else(when details are correct)
+	}//End of Submit Button Click Event 
+	last:
 ?>
 <html>
 	<head>
@@ -95,6 +128,8 @@
 					<p class="para">Gender</p><br>
 					<input type="radio" name="gender" value="male"><font color="white" size="4">Male</font>
 					<input type="radio" name="gender" value="female"><font color="white" size="4">Female</font>
+					<p>Have Referral Code?</p>
+					<input type="text" name="ref" placeholder="Enter referral code (optional)">
 					<p align="center">
 						<?php 
 							if($db)

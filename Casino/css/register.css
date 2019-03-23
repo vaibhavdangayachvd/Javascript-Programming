@@ -39,7 +39,7 @@ left: 50%;
 -o-transform: translate(-50%,-50%);
 transform: translate(-50%,-50%);
 width:400px;
-height: 900px;
+height: 940px;
 padding: 60px 40px;
 background: rgba(0,0,0,0.8);
 }
@@ -89,11 +89,6 @@ margin-bottom:20px;
 	cursor:pointer;
 	margin-top:0%;
 }
-	
-.register input [type="checkbox"]{
-	width:15%;
-	margin-bottom:20px;
-}
 .para{
 	font-size:20px
 	text-align:left;	
@@ -103,8 +98,7 @@ margin-bottom:20px;
 	width:30%;
 	margin-bottom:20px;
 	color:#fff;
-	text-color:#fff;
 	padding:0;
-}	
+}
 
 
