@@ -38,8 +38,7 @@ password VARCHAR(50) UNIQUE,
 email VARCHAR(40) UNIQUE,
 phone VARCHAR(10),
 gender VARCHAR(7),
-balance INT(11),
-ref_id VARCHAR(7)
+balance INT(11)
 )";
 
 if (mysqli_query($conn, $sql)) {
