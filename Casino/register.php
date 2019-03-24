@@ -1,5 +1,5 @@
 <?php
-	error_reporting(0);
+	//error_reporting(0);
 	$fn=$ln=$un=$pw=$em=$ph="";
 	require 'includes/connection.php';
 	if(!$db)

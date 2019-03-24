@@ -119,8 +119,10 @@
                               <a href="#games" class="nav-link scroll">Games</a>
                            </li>
                            
-                          
- 
+                          <li class="nav-item">
+                              <a href="#leaderboard" class="nav-link scroll">Leaderboard</a>
+                           </li>
+						   
                            <li class="nav-item">
                               <a href="#team" class="nav-link scroll">Team</a>
                            </li>
@@ -256,7 +258,7 @@
    </section>
    <!--//about -->
    <!-- service -->
-   <section class="service py-lg-4 py-md-3 py-sm-3 py-3" id="service">
+   <section class="service py-lg-4 py-md-3 py-sm-3 py-3" id="games">
       <div class="container  py-lg-5 py-md-4 py-sm-4 py-3">
          <h3 class="title clr text-center mb-2">Our Games</h3>
          <div class="title-wls-text text-center mb-2">
@@ -283,7 +285,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-6 service-wthree-grid"  id="games">
+            <div class="col-lg-4 col-md-6 col-sm-6 service-wthree-grid">
                <div class="grid">
                   <figure class="effect-goliath">
                      <img src="images/s2.jpg" alt="" class="img-fluid">
@@ -327,7 +329,63 @@
    </section>
    <!-- //service -->
    <!-- timings -->
-   <<!--//timings -->
+   <section class="timings pt-lg-4 pt-md-3 pt-sm-3 pt-3" id="leaderboard">
+      <div class="container pt-lg-5 pt-md-4 pt-sm-4 pt-3">
+         <h3 class="title text-center mb-2">Leaderboard</h3>
+         <div class="title-wls-text text-center mb-2">
+            <p>Scoreboard showing the names and current score of top players</p>
+         </div>
+         <div class="title-img text-center mb-lg-5 mb-md-4 mb-sm-4 mb-3">
+            <img src="images/aa1.png" alt="" class="img-fluid">
+         </div>
+      </div>
+      <div class="timings-hours">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-8 ">
+                  <div class="wls-hours-list">
+                    <table align="center" border="2">
+						<tr align="center">
+							<th colspan="3"><u>Top Players<u></th>
+						</tr>
+						<tr align="center">
+							<th><u>Rank</u></th>
+							<th><u>Username<u></th>
+							<th><u>Coin Balance<u></th>
+						</tr>
+						<?php
+							$query="select username,balance from users order by balance desc limit 10";
+							$query=mysqli_query($db,$query);
+							$count=0;
+							while($row=mysqli_fetch_array($query))
+							{
+								?>
+								<tr>
+									<td align="center"><?php echo ++$count;?></td>
+									<td align="center"><?php echo $row['username']?></td>
+									<td align="center"><?php echo $row['balance']?></td>
+								</tr>
+								<?php
+							}
+						?>
+                    </table>
+                     <div class="timings-details text-center mt-lg-5 mt-md-4 mt-3">
+                        <h4 style="color:black;">Enjoy Your game</h4>
+                        <div class="view-buttn mt-3">
+                           <a href="#games" class=" scroll">Play Now</a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-lg-4">
+                  <img src="images/smkk.png" alt="" class="img-fluid">
+               </div>
+            </div >
+         </div >
+      </div >
+   </section>
+   
+   
    <!-- team -->
    <section class="team py-lg-4 py-md-3 py-sm-3 py-3" id="team">
       <div class="container  py-lg-5 py-md-4 py-sm-4 py-3">

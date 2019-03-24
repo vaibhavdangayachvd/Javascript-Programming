@@ -1425,4 +1425,19 @@ margin: 1em 0em 0em;
 width: 100%;
 }
 }
+table, th, td{
+	margin:auto;
+	border-collapse:collapse;
+	text-align:center;
+	font-size:24px;
+	table-layout:fixed;
+	background:#03F;
+	opacity:1;
+	color:white;
+	margin-top:20px;
+}
+th,td{
+	padding:10px;
+	opacity:0.9;
+}
 /*--//responsive--*/
