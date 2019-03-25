@@ -70,7 +70,10 @@
             {
 				//Insert Data
 				$pw=sha1($pw);
-				$query="insert into users(active,first,last,username,password,email,phone,gender,balance) values($rnd,'$fn','$ln','$un','$pw','$em','$ph','$gen',5000)";
+				if(isset($_POST['ref']))
+					$query="insert into users(active,first,last,username,password,email,phone,gender,balance) values($rnd,'$fn','$ln','$un','$pw','$em','$ph','$gen',5000)";
+				else
+					$query="insert into users(active,first,last,username,password,email,phone,gender,balance) values($rnd,'$fn','$ln','$un','$pw','$em','$ph','$gen',1000)";
 				mysqli_query($db,$query);
 				$query="select id from users where username='$un'";
 				$query=mysqli_query($db,$query);

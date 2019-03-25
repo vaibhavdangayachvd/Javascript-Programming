@@ -115,6 +115,9 @@
                            <li class="nav-item active">
                               <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                            </li>
+						   <li class="nav-item">
+                              <a href="buycoins.php" class="nav-link">Buy Coins</a>
+                           </li>
                            <li class="nav-item">
                               <a href="#games" class="nav-link scroll">Games</a>
                            </li>

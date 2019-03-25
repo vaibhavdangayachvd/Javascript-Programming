@@ -46,6 +46,18 @@ if (mysqli_query($conn, $sql)) {
 } else {
     echo "Error creating table: " . mysqli_error($conn);
 }
+$tbname = "transactions";
+// sql to create table
+$sql = "CREATE TABLE ".$tbname."(
+oid VARCHAR(20),
+uid INT(11),
+amount INT(11)
+)";
 
+if (mysqli_query($conn, $sql)) {
+    echo "Table created successfully";
+} else {
+    echo "Error creating table: " . mysqli_error($conn);
+}
 mysqli_close($conn);
 ?>
