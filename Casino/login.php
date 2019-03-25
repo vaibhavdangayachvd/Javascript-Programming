@@ -92,7 +92,7 @@
 					}
 				?>
 				<button type="button" onClick="window.location.href = 'crosszero.php';">Play Offline</button>
-				<p><a href="index.php?guest=true">Login As Guest</a></p><br>
+				<p><a href="index.php?guest=true">Login As Guest</a>&nbsp;&nbsp;<a href="reset.php">Forgot Password</a></p><br>
 				<p>Keep me logged in<input type="checkbox" name="logged"></p>
 				<p align="center">
 					<?php echo $err;?>

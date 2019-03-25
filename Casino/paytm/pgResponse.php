@@ -36,7 +36,10 @@ if($isValidChecksum == "TRUE") {
 			$coins=10000;
 			break;
 		case 50:
-			$coins=100000;
+			$coins=1000000;
+			break;
+		case 100:
+			$coins=10000000;
 			break;
 		default:
 			$coins=0;
@@ -53,11 +56,13 @@ if($isValidChecksum == "TRUE") {
 		//Verify amount & order id received from Payment gateway with your application's order id and amount.
 	}
 	else {
-		echo "<b>Transaction status is failure</b>" . "<br/>";
+		echo "<b>Transaction status is failed !!</b>" . "<br/>";
+		header( "refresh:2;url=..//index.php" );
 	}
 }
 else {
 	echo "<b>Checksum mismatched.</b>";
+	header( "refresh:2;url=..//index.php" );
 	//Process transaction as suspicious.
 }
 

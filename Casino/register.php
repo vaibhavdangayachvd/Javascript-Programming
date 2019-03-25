@@ -62,7 +62,7 @@
             $mail->addAddress($em, $fn); // Set the recipient of the message.
             $mail->Subject = 'Home Casino - Please confirm your email address.'; // The subject of the message.
             $bd="Thanks for signing up for Home Casino! Please click the link below to confirm your email address.<br><br>";
-			$tmp.="https://homecasino.ml/verify.php?id=".$em."&pw=".sha1($rnd);
+			$tmp="https://homecasino.ml/verify.php?id=".$em."&pw=".sha1($rnd);
 			$bd.="<a href=".$tmp.">".$tmp."</a><br><br>";
             $bd.="Happy playing!<br>Team HomeCasino";
 			$mail->Body = $bd;
@@ -71,7 +71,7 @@
 				//Insert Data
 				$pw=sha1($pw);
 				if(isset($_POST['ref']))
-					$query="insert into users(active,first,last,username,password,email,phone,gender,balance) values($rnd,'$fn','$ln','$un','$pw','$em','$ph','$gen',5000)";
+					$query="insert into users(active,first,last,username,password,email,phone,gender,balance) values($rnd,'$fn','$ln','$un','$pw','$em','$ph','$gen',2000)";
 				else
 					$query="insert into users(active,first,last,username,password,email,phone,gender,balance) values($rnd,'$fn','$ln','$un','$pw','$em','$ph','$gen',1000)";
 				mysqli_query($db,$query);

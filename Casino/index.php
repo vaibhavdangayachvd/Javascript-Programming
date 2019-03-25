@@ -2,16 +2,24 @@
 	error_reporting(0);
 	require 'includes/check_login.php';
 	require 'includes/connection.php';
+	$target=200;
+	$curr = mysqli_query($db,'SELECT SUM(amount) as value_sum FROM transactions'); 
+	$curr = mysqli_fetch_array($curr); 
+	$curr = $curr['value_sum']==NULL?0:$curr['value_sum'];
 	if(isset($_SESSION['user']))
 	{
 		$name=$_SESSION['user'];
-		$name="select first from users where id='$name'";
-		$name=mysqli_query($db,$name);
-		$name=mysqli_fetch_array($name);
-		$name=$name['first'];
+		$query="select first,ref_id from users where id='$name'";
+		$query=mysqli_query($db,$query);
+		$query=mysqli_fetch_array($query);
+		$name=$query['first'];
+		$reff=$query['ref_id'];
 	}
 	else
+	{
 		$name="Guest";
+		$reff="Not available";
+	}
 	if(isset($_POST['submit']))
 	{
 		$nm=$_POST['person'];
@@ -91,8 +99,9 @@
                   <div class="col-lg-7 col-md-7 col-sm-8 email-call ">
                      <ul>
                         <li class="pl-lg-3 pl-2">
-                           <h4>Logged In As :</h4>
-                           <p><?php echo $name;?></p>
+							<?php echo "<b>Referral Code(Free 1000 Coins) : ".$reff." || Current Site Payments : ".$curr."rs | Our Target : ".$target."rs ||</b>";?>
+							<h4>Logged In As :</h4>
+							<p><?php echo $name;?></p>
                         </li>
                      </ul>
                   </div>
@@ -349,7 +358,7 @@
                   <div class="wls-hours-list">
                     <table align="center" border="2">
 						<tr align="center">
-							<th colspan="3"><u>Top Players<u></th>
+							<th colspan="3"><u>Winners get Netflix/Spotify every Monday<u></th>
 						</tr>
 						<tr align="center">
 							<th><u>Rank</u></th>
@@ -357,7 +366,7 @@
 							<th><u>Coin Balance<u></th>
 						</tr>
 						<?php
-							$query="select username,balance from users order by balance desc limit 10";
+							$query="select username,balance from users where username<>'vaibhavdangayachvd' and username<>'vishalvk14' order by balance desc limit 10";
 							$query=mysqli_query($db,$query);
 							$count=0;
 							while($row=mysqli_fetch_array($query))

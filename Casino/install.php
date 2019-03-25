@@ -38,7 +38,8 @@ password VARCHAR(50) UNIQUE,
 email VARCHAR(40) UNIQUE,
 phone VARCHAR(10),
 gender VARCHAR(7),
-balance INT(11)
+balance INT(11),
+ref_id VARCHAR(8)
 )";
 
 if (mysqli_query($conn, $sql)) {
@@ -59,5 +60,11 @@ if (mysqli_query($conn, $sql)) {
 } else {
     echo "Error creating table: " . mysqli_error($conn);
 }
+$tbname = "referrals";
+$sql = "CREATE TABLE ".$tbname."(
+ref_id VARCHAR(8),
+user_id INT(11),
+active TINYINT(1)
+)";
 mysqli_close($conn);
 ?>
