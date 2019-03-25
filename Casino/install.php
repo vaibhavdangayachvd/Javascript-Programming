@@ -52,7 +52,8 @@ $tbname = "transactions";
 $sql = "CREATE TABLE ".$tbname."(
 oid VARCHAR(20),
 uid INT(11),
-amount INT(11)
+amount INT(11),
+success TINYINT(1)
 )";
 
 if (mysqli_query($conn, $sql)) {

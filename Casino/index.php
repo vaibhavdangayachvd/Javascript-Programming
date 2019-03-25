@@ -3,7 +3,7 @@
 	require 'includes/check_login.php';
 	require 'includes/connection.php';
 	$target=200;
-	$curr = mysqli_query($db,'SELECT SUM(amount) as value_sum FROM transactions'); 
+	$curr = mysqli_query($db,'SELECT SUM(amount) as value_sum FROM transactions where success=1'); 
 	$curr = mysqli_fetch_array($curr); 
 	$curr = $curr['value_sum']==NULL?0:$curr['value_sum'];
 	if(isset($_SESSION['user']))
